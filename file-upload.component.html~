@@ -1,0 +1,6 @@
+  <label for="file">Upload Assignment: <br>
+  </label>
+  <input type="file"
+	 id="file"
+	 (change)="handleFileInput($event)">	 
+</div>
