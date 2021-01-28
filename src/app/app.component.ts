@@ -9,10 +9,11 @@ import { FileUploadService } from 'src/app/file-upload.service';
 export class AppComponent {
   title = 'Assignment Timeline Maker';
   public fileString;
+  public fus: FileUploadService;
   fileUpload: File = null;
 
 
-constructor(public fus: FileUploadService) {
+constructor() {
 
 }
 // tslint:disable-next-line:typedef

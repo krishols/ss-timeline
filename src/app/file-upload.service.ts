@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Output} from '@angular/core';
 import JSZip from 'jszip';
 import {DXT} from 'docxtemplater';
 import integer = DXT.integer;
@@ -9,7 +9,7 @@ import integer = DXT.integer;
   providedIn: 'root'
 })
 export class FileUploadService {
-  public fileString;
+  public ptsArray = [];
 
   constructor() {
   }
@@ -52,7 +52,6 @@ export class FileUploadService {
     // returns array of point values found in document
     let tempArray;
     const resultsArray = [];
-    const ptsArray = [];
     const re = new RegExp('\\[.*?\\]', 'g');
     const reNum = new RegExp('\\d+');
     tempArray = re.exec(cleanedText);
@@ -61,9 +60,9 @@ export class FileUploadService {
       tempArray = re.exec(cleanedText);
     }
     for (const elem of resultsArray) {
-      ptsArray.push(reNum.exec(elem));
+      this.ptsArray.push(reNum.exec(elem)[0]);
     }
-    return ptsArray;
+    return this.ptsArray;
   }
 }
 

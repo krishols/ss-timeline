@@ -5,11 +5,12 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DatesComponent } from './dates/dates.component';
 
 
 
 @NgModule({
-  declarations: [TimelineComponent],
+  declarations: [TimelineComponent, DatesComponent],
   imports: [
     CommonModule, MatNativeDateModule, MatDatepickerModule, MatFormFieldModule, ReactiveFormsModule
   ],

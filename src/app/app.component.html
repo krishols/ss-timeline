@@ -10,17 +10,16 @@
   <h1>{{title}}</h1>
   </div>
 
-<div><app-timeline></app-timeline>
-</div>
-<br> <br>
-
-<div class="file-handler">
-  <label for="file">Upload Assignment:
-  </label>
-  <input type="file"
-	 id="file"
-	 (change)="fus.handleFileInput($event)"/>
-</div>
-<div *ngIf="fus.fileString">
-  <h4>{{fus.fileString}}</h4>
+<div>
+  <app-timeline>
+  </app-timeline>
+  <div class="file-handler">
+    <label for="file">Upload Assignment:
+    </label>
+    <input type="file"
+           id="file"
+           (change)="fus.handleFileInput($event)"/>
   </div>
+  </div>
+
+

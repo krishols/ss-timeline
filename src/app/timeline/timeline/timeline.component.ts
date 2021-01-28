@@ -1,16 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
+import {stringify} from 'querystring';
+import {FileUploadService} from '../../file-upload.service';
 
 /** @title Date range picker forms integration */
 @Component({
   selector: 'app-timeline',
-  templateUrl: 'timeline.component.html'
+  templateUrl: 'timeline.component.html',
+  styleUrls: ['timeline.component.css']
 })
 export class TimelineComponent {
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
-  });
+  @Input('points') numPoints;
 }
 
 
