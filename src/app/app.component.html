@@ -11,8 +11,7 @@
   </div>
 
 <div>
-  <app-timeline>
-  </app-timeline>
+<app-dates [numPoints]="points" (calcTL)="calcTL()"></app-dates>
   <div class="file-handler">
     <label for="file">Upload Assignment:
     </label>
@@ -21,5 +20,6 @@
            (change)="fus.handleFileInput($event)"/>
   </div>
   </div>
+
 
 

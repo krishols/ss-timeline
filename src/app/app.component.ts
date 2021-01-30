@@ -1,5 +1,6 @@
 import { Component, Optional  } from '@angular/core';
-import { FileUploadService } from 'src/app/file-upload.service';
+import { FileUploadService } from 'src/app/timeline/file-upload.service';
+import { TimelineService } from './timeline/timeline.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,16 @@ import { FileUploadService } from 'src/app/file-upload.service';
 export class AppComponent {
   title = 'Assignment Timeline Maker';
   public fileString;
-  public fus: FileUploadService;
+  public points;
   fileUpload: File = null;
 
 
-constructor() {
-
+constructor(public fus: FileUploadService, public tlserve: TimelineService) {
+  this.points = fus.ptsArray;
 }
-// tslint:disable-next-line:typedef
-ngOnit() {
+calcTL(): void {
+  console.log("out");
+}
+ngOnit(): void {
 }
 }

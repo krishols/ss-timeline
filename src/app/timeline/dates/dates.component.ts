@@ -1,6 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FileUploadService} from '../../file-upload.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FileUploadService} from '../file-upload.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import { TimelineService } from '../timeline.service';
+import {OuterSubscriber} from 'rxjs/internal-compatibility';
+import {DatesService} from '../dates.service';
+
 
 @Component({
   selector: 'app-dates',
@@ -8,23 +12,21 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./dates.component.css']
 })
 export class DatesComponent implements OnInit {
+  @Input() numPoints;
+  @Output('calcTL') calcTL: EventEmitter<any> = new EventEmitter<any>();
+  tlserve: TimelineService = new TimelineService();
+  datesserv: DatesService = new DatesService();
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
   });
-  calcRange(): void {
-    let startDate = JSON.stringify(this.range.get('start').value);
-    startDate = startDate.substring(1, 20);
-    const start = new Date(startDate);
-    let endDate = JSON.stringify(this.range.get('end').value);
-    endDate = endDate.substring(1, 20);
-    const end = new Date(endDate);
-    const diff = end.getTime() - start.getTime();
-    const diffDays = diff / (1000 * 3600 * 24);
+  onChange(range: FormGroup): void {
+    const diff = this.datesserv.calcRange(range);
   }
   constructor() { }
 
   ngOnInit(): void {
+    }
   }
 
-}
+
