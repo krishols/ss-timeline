@@ -6,6 +6,7 @@ import {OuterSubscriber} from 'rxjs/internal-compatibility';
 import {DatesService} from '../dates.service';
 
 
+
 @Component({
   selector: 'app-dates',
   templateUrl: './dates.component.html',
@@ -13,7 +14,7 @@ import {DatesService} from '../dates.service';
 })
 export class DatesComponent implements OnInit {
   @Input() numPoints;
-  @Output('calcTL') calcTL: EventEmitter<any> = new EventEmitter<any>();
+  @Output() diffEvent = new EventEmitter<number>();
   tlserve: TimelineService = new TimelineService();
   datesserv: DatesService = new DatesService();
   range = new FormGroup({
@@ -22,6 +23,7 @@ export class DatesComponent implements OnInit {
   });
   onChange(range: FormGroup): void {
     const diff = this.datesserv.calcRange(range);
+    this.diffEvent.emit(diff);
   }
   constructor() { }
 

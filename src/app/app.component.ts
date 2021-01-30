@@ -11,15 +11,25 @@ export class AppComponent {
   title = 'Assignment Timeline Maker';
   public fileString;
   public points;
+  public diffDays: number;
   fileUpload: File = null;
 
 
-constructor(public fus: FileUploadService, public tlserve: TimelineService) {
-  this.points = fus.ptsArray;
+constructor() {
 }
-calcTL(): void {
-  console.log("out");
+
+addDiff(diff: number): void {
+  this.diffDays = diff;
+  console.log('diff: ', this.diffDays);
 }
+addPoints(points: Array<any>): void {
+  this.points = points;
+  console.log('points: ', this.points);
+}
+handleSubmit(): void {
+
+}
+
 ngOnit(): void {
 }
 }

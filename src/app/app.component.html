@@ -10,16 +10,7 @@
   <h1>{{title}}</h1>
   </div>
 
-<div>
-<app-dates [numPoints]="points" (calcTL)="calcTL()"></app-dates>
-  <div class="file-handler">
-    <label for="file">Upload Assignment:
-    </label>
-    <input type="file"
-           id="file"
-           (change)="fus.handleFileInput($event)"/>
-  </div>
-  </div>
+<app-dates (diffEvent)="addDiff($event)"></app-dates>
+<app-file-upload (pointsEvent)= "addPoints($event)"></app-file-upload>
 
-
-
+<input type="submit" (change)="handleSubmit()">

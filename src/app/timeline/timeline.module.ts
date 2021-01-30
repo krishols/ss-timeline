@@ -14,6 +14,6 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     CommonModule, MatNativeDateModule, MatDatepickerModule, MatFormFieldModule, ReactiveFormsModule
   ],
   providers: [MatDatepickerModule, MatNativeDateModule],
-  exports: [DatesComponent]
+  exports: [DatesComponent, FileUploadComponent]
 })
 export class TimelineModule { }
