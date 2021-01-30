@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TimelineService {
-  calcTL(pts, days): void {
-
+  calcTL(pts: Array<number>, days: number): void {
+      console.log(pts, days);
   }
   constructor() { }
 }

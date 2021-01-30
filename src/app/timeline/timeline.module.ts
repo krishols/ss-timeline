@@ -6,10 +6,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DatesComponent} from './dates/dates.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 
 @NgModule({
-  declarations: [DatesComponent, FileUploadComponent],
+  declarations: [DatesComponent, FileUploadComponent, TimelineComponent],
   imports: [
     CommonModule, MatNativeDateModule, MatDatepickerModule, MatFormFieldModule, ReactiveFormsModule
   ],

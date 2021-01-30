@@ -1,11 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <div class="center">
   <h1>{{title}}</h1>
   </div>
@@ -13,4 +5,4 @@
 <app-dates (diffEvent)="addDiff($event)"></app-dates>
 <app-file-upload (pointsEvent)= "addPoints($event)"></app-file-upload>
 
-<input type="submit" (change)="handleSubmit()">
+<input type="submit" (click)="handleSubmit()">
