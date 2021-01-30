@@ -15,6 +15,6 @@ import { TimelineComponent } from './timeline/timeline.component';
     CommonModule, MatNativeDateModule, MatDatepickerModule, MatFormFieldModule, ReactiveFormsModule
   ],
   providers: [MatDatepickerModule, MatNativeDateModule],
-  exports: [DatesComponent, FileUploadComponent]
+  exports: [DatesComponent, FileUploadComponent, TimelineComponent]
 })
 export class TimelineModule { }
