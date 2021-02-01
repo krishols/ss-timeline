@@ -2,9 +2,12 @@
   <h1>{{title}}</h1>
   </div>
 
-<app-dates (diffEvent)="addDiff($event)"></app-dates>
+<app-dates (diffEvent)="addDiff($event)" (dateRange)="addRange($event)"></app-dates>
 <app-file-upload (pointsEvent)= "addPoints($event)"></app-file-upload>
 
 <input type="submit" (click)="handleSubmit()">
 
-<app-timeline></app-timeline>
+<div *ngIf="valid">
+  <app-timeline [days]="daysArray">
+  </app-timeline>
+</div>

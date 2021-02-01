@@ -10,7 +10,7 @@
         <div class="timeline-start"></div>
         <div class="conference-center-line"></div>
         <div class="conference-timeline-content">
-          <div class="timeline-article timeline-article-top">
+          <div *ngFor="let day of days" [ngStyle]="{'left.px': day}"class="timeline-article timeline-article-top">
             <div class="content-date">
               <span>10-09-2017</span>
             </div>
@@ -20,34 +20,7 @@
             </div>
           </div>
 
-          <div class="timeline-article timeline-article-bottom">
-            <div class="content-date">
-              <span>10-09-2017</span>
-            </div>
-            <div class="meta-date"></div>
-            <div class="content-box">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-            </div>
-          </div>
-          <div class="timeline-article timeline-article-top">
-            <div class="content-date">
-              <span>10-09-2017</span>
-            </div>
-            <div class="meta-date"></div>
-            <div class="content-box">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-            </div>
-          </div>
 
-          <div class="timeline-article timeline-article-bottom">
-            <div class="content-date">
-              <span>10-09-2017</span>
-            </div>
-            <div class="meta-date"></div>
-            <div class="content-box">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-            </div>
-          </div>
         </div>
         <div class="timeline-end"></div>
       </section>

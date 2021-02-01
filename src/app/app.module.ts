@@ -47,11 +47,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { CommonModule} from '@angular/common';
 import {FormGroup, FormControl} from '@angular/forms';
+import {TimelineComponent} from './timeline/timeline/timeline.component';
+import {DatesComponent} from './timeline/dates/dates.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import {FormGroup, FormControl} from '@angular/forms';
   CdkStepperModule,
   CdkTableModule,
   CdkTreeModule,
+    CommonModule,
   DragDropModule,
   MatAutocompleteModule,
   MatBadgeModule,
@@ -105,5 +109,5 @@ import {FormGroup, FormControl} from '@angular/forms';
   bootstrap: [AppComponent]
 })
 export class AppModule {
- 
+
 }
