@@ -15,7 +15,7 @@ import {DatesService} from '../dates.service';
 export class DatesComponent implements OnInit {
   @Input() numPoints;
   @Output() diffEvent = new EventEmitter<number>();
-  @Output() dateRange = new EventEmitter<FormGroup>();
+  @Output() dateRange = new EventEmitter<Array<any>>();
   tlserve: TimelineService = new TimelineService();
   datesserv: DatesService = new DatesService();
   range = new FormGroup({
@@ -25,7 +25,9 @@ export class DatesComponent implements OnInit {
   onChange(range: FormGroup): void {
     const diff = this.datesserv.calcRange(range);
     this.diffEvent.emit(diff);
-    this.dateRange.emit(range);
+    const startEndDates = this.datesserv.convertToDates(range);
+    console.log(startEndDates, 'dates');
+    this.dateRange.emit(startEndDates);
   }
   constructor() { }
 

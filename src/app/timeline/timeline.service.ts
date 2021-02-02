@@ -7,7 +7,7 @@ import {FormGroup} from '@angular/forms';
 })
 
 export class TimelineService {
-  calcTL(pts: Array<any>, days: number, range: FormGroup): Array<any> {
+  calcTL(pts: Array<any>, days: number, range: Array<any>): Array<any> {
     let total = 0;
     let totalDays = 0;
     let smallestDay;
@@ -37,9 +37,11 @@ export class TimelineService {
     if (totalDays < days) {
       ptsWeight[smallIndex][0] += 1;
     }
+    // ptsWeight[0].push(range[0]);
+    ptsWeight[ptsWeight.length - 1].push(range[1]);
     return this.calcDates(range, ptsWeight);
   }
-  calcDates(range: FormGroup, dataArr: Array<Array<number>>): Array<any> {
+  calcDates(range: Array<any>, dataArr: Array<Array<number>>): Array<any> {
     let total = 0;
     for (let i = 0; i < dataArr.length; i ++) {
       total += dataArr[i][0];
