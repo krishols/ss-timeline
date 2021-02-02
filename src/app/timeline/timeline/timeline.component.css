@@ -30,8 +30,7 @@ body{
 }
 .timeline-article{
   width: 20%;
-  position: relative;
-  left: 650px;
+  position: absolute;
   min-height: 300px;
   float:right;
 }

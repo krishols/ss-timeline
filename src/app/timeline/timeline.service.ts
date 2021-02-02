@@ -1,4 +1,5 @@
 import {Injectable, Output, EventEmitter} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 
 @Injectable({
@@ -6,7 +7,7 @@ import {Injectable, Output, EventEmitter} from '@angular/core';
 })
 
 export class TimelineService {
-  calcTL(pts: Array<any>, days: number): Array<any> {
+  calcTL(pts: Array<any>, days: number, range: FormGroup): Array<any> {
     let total = 0;
     let totalDays = 0;
     let smallestDay;
@@ -23,7 +24,9 @@ export class TimelineService {
         smallestDay = ptDist;
         first = false;
       }
-      ptsWeight.push(ptDist);
+      const temp = [];
+      temp.push(ptDist);
+      ptsWeight.push(temp);
       totalDays += ptDist;
       index++;
       if (ptDist < smallestDay) {
@@ -32,9 +35,22 @@ export class TimelineService {
       }
     }
     if (totalDays < days) {
-      ptsWeight[smallIndex] += 1;
+      ptsWeight[smallIndex][0] += 1;
     }
-    return ptsWeight;
+    return this.calcDates(range, ptsWeight);
+  }
+  calcDates(range: FormGroup, dataArr: Array<Array<number>>): Array<any> {
+    let total = 0;
+    for (let i = 0; i < dataArr.length; i ++) {
+      total += dataArr[i][0];
+    }
+    let index = 0;
+    for (let i = 0; i < dataArr.length; i ++) {
+      index += (dataArr[i][0] / total) * 1118;
+      console.log(index);
+      dataArr[i].push(index);
+    }
+    return dataArr;
   }
   constructor() { }
 }

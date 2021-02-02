@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TimelineComponent implements OnInit {
   @Input() days: Array<any>;
+  @Input() total: number;
   constructor() { }
 
   ngOnInit(): void {

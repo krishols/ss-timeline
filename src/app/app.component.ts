@@ -13,7 +13,7 @@ export class AppComponent {
   public diffDays: number;
   public valid = false;
   public range: FormGroup;
-  public daysArray: Array<number>;
+  public daysArray: Array<any>;
   public tlserv: TimelineService = new TimelineService();
 
 
@@ -33,10 +33,8 @@ addRange(range: FormGroup): void {
 handleSubmit(): void {
   if (this.diffDays && this.points) {
     this.valid = true;
-    this.daysArray = this.tlserv.calcTL(this.points, this.diffDays);
-    console.log(this.daysArray.length);
-    this.daysArray.push(3);
-    //this.daysArray = [-910, -150, 660];
+    this.daysArray = this.tlserv.calcTL(this.points, this.diffDays, this.range);
+    console.log(this.daysArray);
   }
 }
 
