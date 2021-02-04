@@ -29,6 +29,7 @@ addPoints(points: Array<any>): void {
 }
 addRange(range: Array<any>): void {
   this.range = range;
+  console.log(range[0], 'range one');
 }
 handleSubmit(): void {
   if (this.diffDays && this.points) {

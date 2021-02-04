@@ -8,6 +8,6 @@
 <input type="submit" (click)="handleSubmit()">
 
 <div *ngIf="valid">
-  <app-timeline [days]="daysArray">
+  <app-timeline [days]="daysArray" [range] = "range">
   </app-timeline>
 </div>
