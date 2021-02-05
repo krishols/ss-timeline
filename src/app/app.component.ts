@@ -14,6 +14,7 @@ export class AppComponent {
   public valid = false;
   public range: Array<any>;
   public daysArray: Array<any>;
+  public tldays: Array<any>;
   public tlserv: TimelineService = new TimelineService();
 
 
@@ -29,12 +30,13 @@ addPoints(points: Array<any>): void {
 }
 addRange(range: Array<any>): void {
   this.range = range;
-  console.log(range[0], 'range one');
+
 }
 handleSubmit(): void {
   if (this.diffDays && this.points) {
     this.valid = true;
     this.daysArray = this.tlserv.calcTL(this.points, this.diffDays, this.range);
+    this.tldays = this.tlserv.createTLdates(this.range);
   }
 }
 

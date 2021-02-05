@@ -7,12 +7,24 @@
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <section class="main-timeline-section">
-        <div class="timeline-start"></div>
+        <div class="timeline-start">
+        </div>
         <div class="conference-center-line"></div>
         <div class="conference-timeline-content">
+          <div class="timeline-article timeline-article-top">
+          <div class ="content-date">
+          <span>{{range[0].toDateString().substring(0,10)}}</span>
+          </div>
+            <div class="content-box">
+              <p>Assignment released</p>
+            </div>
+          </div>
+          <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[1]}" class="timeline-article timeline-article-top">
+          <div  class="day-marker"></div>
+          </div>
           <div *ngFor="let day of days" [ngStyle]="{'left.px': day[1]}" class="timeline-article timeline-article-top">
             <div class="content-date">
-              <span>10-09-2017</span>
+              <span>{{day[2]}}</span>
             </div>
             <div class="meta-date"></div>
             <div class="content-box">

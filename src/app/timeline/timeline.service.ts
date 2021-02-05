@@ -16,6 +16,7 @@ export class TimelineService {
     dataArr = this.calcPixels(range, dataArr);
     // dataArr is arrays of [day per part, pixels per part]
     dataArr = this.addDates(range, dataArr);
+    // dataArr is array of [day per part, pixels per part, corresponding date]
     return dataArr;
   }
   calcTotalPoints(pts: Array<any>): number {
@@ -57,26 +58,42 @@ export class TimelineService {
   calcPixels(range: Array<any>, dataArr: Array<Array<number>>): Array<any> {
     // calculates pixels to use per part of timeline
     let index = 0;
-    console.log(this.totalDays, 'total');
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < dataArr.length; i ++) {
       index += (dataArr[i][0]  * 1115) / this.totalDays;
-      console.log(index);
       dataArr[i].push(index);
     }
-    console.log(dataArr[0], dataArr[1]);
     return dataArr;
   }
   addDates(range: Array<any>, dataArr: Array<Array<any>>): Array<any> {
+    // adds date to complete to each part of assignment
     let index = 0;
     for (const part of dataArr){
       index += part[0];
       let tempDate = new Date();
       tempDate = tempDate.addDays(range, index);
-      part.push(tempDate.toDateString());
-      console.log(tempDate.toDateString());
+      part.push(tempDate.toDateString().substring(0, 10));
     }
     return dataArr;
+  }
+  createTLdates(range: Array<any>): Array<any> {
+    let dates = [];
+    dates.push([range[0].toDateString().substring(0, 10)]);
+    for (let i = 1; i < this.totalDays; i ++) {
+      let tempDate = new Date();
+      tempDate = tempDate.addDays(range, i);
+      dates.push([tempDate.toDateString().substring(0, 10)]);
+    }
+    dates.push([range[1].toDateString().substring(0, 10)]);
+    dates = this.calcTLPixels(range, dates);
+    return dates;
+  }
+  calcTLPixels(range: Array<any>, dates: Array<any>): Array<any> {
+    const incre = 1115.0 / this.totalDays;
+    for (let i = 0; i < this.totalDays; i ++) {
+        dates[i].push(i * incre);
+    }
+    return dates;
   }
   constructor() { }
 }
