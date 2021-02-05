@@ -1,5 +1,6 @@
 import {Injectable, Output, EventEmitter} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import 'src/app/custom-methods/custom-methods.module';
 
 
 @Injectable({
@@ -13,6 +14,8 @@ export class TimelineService {
     const totalPoints = this.calcTotalPoints(pts);
     let dataArr = this.calcDate(pts, days, range, totalPoints);
     dataArr = this.calcPixels(range, dataArr);
+    // dataArr is arrays of [day per part, pixels per part]
+    dataArr = this.addDates(range, dataArr);
     return dataArr;
   }
   calcTotalPoints(pts: Array<any>): number {
@@ -55,12 +58,24 @@ export class TimelineService {
     // calculates pixels to use per part of timeline
     let index = 0;
     console.log(this.totalDays, 'total');
+    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < dataArr.length; i ++) {
       index += (dataArr[i][0]  * 1115) / this.totalDays;
       console.log(index);
       dataArr[i].push(index);
     }
     console.log(dataArr[0], dataArr[1]);
+    return dataArr;
+  }
+  addDates(range: Array<any>, dataArr: Array<Array<any>>): Array<any> {
+    let index = 0;
+    for (const part of dataArr){
+      index += part[0];
+      let tempDate = new Date();
+      tempDate = tempDate.addDays(range, index);
+      part.push(tempDate.toDateString());
+      console.log(tempDate.toDateString());
+    }
     return dataArr;
   }
   constructor() { }
