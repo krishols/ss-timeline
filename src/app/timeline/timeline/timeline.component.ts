@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
-  @Input() days: Array<any>;
+  @Input() parts: Array<any>;
   @Input() total: number;
   @Input() range: Array<any>;
   @Input() totalDays: Array<any>;

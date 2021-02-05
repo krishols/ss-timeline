@@ -39,6 +39,8 @@ body{
   top: 35%;
   left: -30px;
   font-size:18px;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 .timeline-article .meta-date{
   position: absolute;
@@ -59,6 +61,8 @@ body{
   width: 180px;
   position: absolute;
   top: 60%;
+  text-align: center;
+  font-size: 1.5vw;
   left: -80px;
   padding:10px;
 }

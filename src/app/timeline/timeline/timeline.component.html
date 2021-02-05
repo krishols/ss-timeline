@@ -16,23 +16,21 @@
           <span>{{range[0].toDateString().substring(0,10)}}</span>
           </div>
             <div class="content-box">
-              <p>Assignment released</p>
+              <p>Assignment Released</p>
             </div>
           </div>
-          <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[1]}" class="timeline-article timeline-article-top">
-          <div  class="day-marker"></div>
-          </div>
-          <div *ngFor="let day of days" [ngStyle]="{'left.px': day[1]}" class="timeline-article timeline-article-top">
-            <div class="content-date">
-              <span>{{day[2]}}</span>
+          <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2]}" class="timeline-article timeline-article-top">
+          <div *ngIf="!parts.includes(day[0])" class="day-marker"></div>
+            <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top">
+              <div class="content-date">
+                <span>{{day[1]}}</span>
+              </div>
+              <div class="meta-date"></div>
+              <div class="content-box">
+                <p>{{day[0]}}</p>
+              </div>
             </div>
-            <div class="meta-date"></div>
-            <div class="content-box">
-              <p><br> {{day}}</p>
-            </div>
           </div>
-
-
         </div>
         <div class="timeline-end"></div>
       </section>
