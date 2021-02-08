@@ -7,13 +7,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { DatesComponent} from './dates/dates.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { TimelineComponent } from './timeline/timeline.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
   declarations: [DatesComponent, FileUploadComponent, TimelineComponent],
   imports: [
-    CommonModule, MatNativeDateModule, MatDatepickerModule, MatFormFieldModule, ReactiveFormsModule
+    CommonModule, MatNativeDateModule, MatDatepickerModule, MatFormFieldModule, ReactiveFormsModule, DragDropModule
   ],
   providers: [MatDatepickerModule, MatNativeDateModule],
   exports: [DatesComponent, FileUploadComponent, TimelineComponent]
