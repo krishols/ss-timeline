@@ -20,9 +20,10 @@
             </div>
           </div>
           <div cdkDropList [cdkDropListData]="totalDays" [cdkDropListOrientation]="'horizontal'" (cdkDropListDropped)="drop($event)" class="example-list">
-          <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2]}" class="timeline-article timeline-article-top" cdkDrag>
+          <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2]}" class="timeline-article timeline-article-top" cdkDrag [cdkDragDisabled]="true">
             <div *ngIf="!parts.includes(day[0])" class="day-marker"></div>
-            <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top">
+            <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top" cdkDrag [cdkDragDisabled]="false">
+              <div class="placeholder" *cdkDragPlaceholder></div>
               <div class="content-date">
                 <span>{{day[1]}}</span>
               </div>

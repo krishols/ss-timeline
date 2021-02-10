@@ -85,8 +85,7 @@ export class TimelineService {
   }
   createTLdates(range: Array<any>): Array<any> {
     let dates = [];
-    dates.push([0]);
-    dates[0].push([range[0].toDateString().substring(0, 10)]);
+    dates.push([0, range[0].toDateString().substring(0, 10)]);
     for (let i = 1; i < this.totalDays; i ++) {
       let tempDate = new Date();
       tempDate = tempDate.addDays(range, i);
