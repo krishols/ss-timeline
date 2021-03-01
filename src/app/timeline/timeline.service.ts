@@ -35,7 +35,6 @@ export class TimelineService {
     // calculates number of days to spend on each part of timeline
     this.totalDays = 0;
     let smallestDay;
-    let count = 0;
     let first = true;
     let index = 0;
     let smallIndex = 0;
@@ -59,7 +58,6 @@ export class TimelineService {
       ptsWeight[ptsWeight.length - 1] += 1;
       this.totalDays += 1;
     }
-    console.log(ptsWeight, 'pts', this.totalDays);
     return ptsWeight;
   }
   calcPixels(range: Array<any>, dataArr: Array<Array<number>>): Array<any> {
@@ -93,13 +91,12 @@ export class TimelineService {
     }
     dates.push([this.totalDays, range[1].toDateString().substring(0, 10)]);
     dates = this.calcTLPixels(range, dates);
-    console.log(dates);
     return dates;
   }
   calcTLPixels(range: Array<any>, dates: Array<any>): Array<any> {
     const incre = 1115.0 / this.totalDays;
     for (let i = 0; i <= this.totalDays; i ++) {
-        dates[i].push(i * incre);
+      dates[i].push(i * incre);
     }
     return dates;
   }

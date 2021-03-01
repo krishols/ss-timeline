@@ -19,15 +19,17 @@
               <p>Assignment Released</p>
             </div>
           </div>
-          <div cdkDropList [cdkDropListData]="totalDays" [cdkDropListOrientation]="'horizontal'" (cdkDropListDropped)="drop($event)" class="example-list">
-          <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2]}" class="timeline-article timeline-article-top" cdkDrag [cdkDragDisabled]="true">
-            <div *ngIf="!parts.includes(day[0])" class="day-marker"></div>
-            <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top" cdkDrag [cdkDragDisabled]="false">
-              <div class="placeholder" *cdkDragPlaceholder></div>
+          <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2]}" class="timeline-article timeline-article-top" cdkDrag>
+          <div class="day-marker"></div>
+            </div>
+          <div cdkDropListGroup class="example-list">
+          <div cdkDropList [cdkDropListData]="day[0]" [cdkDropListOrientation]="'horizontal'" *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2] - 25}"
+               class="timeline-article timeline-article-top" (cdkDropListDropped)="drop($event)">
+            <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top part" cdkDrag>
+              <div class="meta-date"></div>
               <div class="content-date">
                 <span>{{day[1]}}</span>
               </div>
-              <div class="meta-date"></div>
               <div class="content-box">
                 <p>{{day[0]}}</p>
               </div>
@@ -35,7 +37,7 @@
           </div>
           </div>
         </div>
-        <div class="timeline-end"></div>
+        <div [ngStyle]="{'left.px': 1094}" class="timeline-end"></div>
       </section>
     </div>
   </div>

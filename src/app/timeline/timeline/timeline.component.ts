@@ -15,16 +15,13 @@ export class TimelineComponent implements OnInit {
   @Input() pixels: Array<any>;
   constructor() { }
   drop(event: CdkDragDrop<Array<any>>): void {
-    const temp = this.totalDays[event.currentIndex];
-    console.log(event);
-    console.log(this.parts);
     for (let i = 0; i < this.parts.length; i ++) {
-      if (this.parts[i] === this.totalDays[event.previousIndex -1][0]) {
-        this.parts[i] = this.totalDays[event.currentIndex][0];
+      // @ts-ignore
+      if (this.totalDays[event.previousContainer.data][0] === this.parts[i]) {
+        // @ts-ignore
+        this.parts[i] = this.totalDays[event.container.data][0];
       }
-      i = this.parts.length + 1;
     }
-    console.log(this.totalDays);
   }
   ngOnInit(): void {
   }
