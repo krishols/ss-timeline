@@ -68,7 +68,7 @@ export class TimelineService {
       for (const day of daysArray) {
         if (pointsArray[index] === day[0]) {
           const temp = index + 1;
-          const label = 'Finsh Part ' + temp + '.';
+          const label = 'Finsh Pgiart ' + temp + '.';
           day.push(label);
           index += 1;
         }
