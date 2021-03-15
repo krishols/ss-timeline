@@ -38,6 +38,7 @@ handleSubmit(): void {
     this.valid = true;
     this.partDaysArray = this.tlserv.calcTL(this.points, this.diffDays, this.range);
     this.tldays = this.tlserv.createTLdates(this.range);
+    this.tldays = this.tlserv.createLabels(this.tldays, this.partDaysArray);
   }
 }
 

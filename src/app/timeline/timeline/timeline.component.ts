@@ -20,6 +20,10 @@ export class TimelineComponent implements OnInit {
       if (this.totalDays[event.previousContainer.data][0] === this.parts[i]) {
         // @ts-ignore
         this.parts[i] = this.totalDays[event.container.data][0];
+        // @ts-ignore
+        this.totalDays[event.container.data][3] = this.totalDays[event.previousContainer.data][3];
+        // @ts-ignore
+        this.totalDays[event.previousContainer.data][3] = null;
       }
     }
   }

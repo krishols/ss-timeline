@@ -60,6 +60,22 @@ export class TimelineService {
     }
     return ptsWeight;
   }
+
+   createLabels(daysArray: Array<any>, pointsArray: Array<any>): Array<any> {
+      console.log(daysArray);
+      console.log(pointsArray);
+      let index = 0;
+      for (const day of daysArray) {
+        if (pointsArray[index] === day[0]) {
+          const temp = index + 1;
+          const label = 'Finsh Part ' + temp + '.';
+          day.push(label);
+          index += 1;
+        }
+      }
+      daysArray[daysArray.length - 1][3] = 'Assignment due';
+      return daysArray;
+   }
   calcPixels(range: Array<any>, dataArr: Array<Array<number>>): Array<any> {
     // calculates pixels to use per part of timeline
     let index = 0;
