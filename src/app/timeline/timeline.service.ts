@@ -14,15 +14,7 @@ export class TimelineService {
     const totalPoints = this.calcTotalPoints(pts);
     return this.calcDate(pts, days, range, totalPoints);
   }
-  // calcTL(pts: Array<any>, days: number, range: Array<any>): Array<any> {
-  // calls helper functions to calculate data necessary for timeline
-  // const totalPoints = this.calcTotalPoints(pts);
- // let dataArr = this.calcDate(pts, days, range, totalPoints);
-  // dataArr = this.calcPixels(range, dataArr);
-  // dataArr is arrays of [day per part, pixels per part]
-  // dataArr = this.addDates(range, dataArr);
-  // dataArr is array of [day per part, pixels per part, corresponding date]
-  // return dataArr;
+
   calcTotalPoints(pts: Array<any>): number {
     // calculates total points in assignment given
     let total = 0;
@@ -62,13 +54,11 @@ export class TimelineService {
   }
 
    createLabels(daysArray: Array<any>, pointsArray: Array<any>): Array<any> {
-      console.log(daysArray);
-      console.log(pointsArray);
       let index = 0;
       for (const day of daysArray) {
         if (pointsArray[index] === day[0]) {
           const temp = index + 1;
-          const label = 'Finsh Pgiart ' + temp + '.';
+          const label = 'Finish Part ' + temp + '.';
           day.push(label);
           index += 1;
         }

@@ -27,7 +27,16 @@ export class TimelineComponent implements OnInit {
       }
     }
   }
-  ngOnInit(): void {
+  onClick(): void {
+    const index = this.totalDays.length - 2;
+    const partData = this.parts[this.parts.length - 1] - 1;
+    this.parts.splice((this.parts.length - 1), 0, partData);
+    this.totalDays[index][3] = ('New Section');
+  }
+  onTextChange(val){
+    console.log(val);
+  } 
+   ngOnInit(): void {
   }
 
 }

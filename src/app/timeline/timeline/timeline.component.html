@@ -15,7 +15,7 @@
           <div class ="content-date">
           <span>{{range[0].toDateString().substring(0,10)}}</span>
           </div>
-            <div class="content-box">
+            <div class="content-box" contenteditable="true">
               <p>Assignment Released</p>
             </div>
           </div>
@@ -25,13 +25,13 @@
           <div cdkDropListGroup class="example-list">
           <div cdkDropList [cdkDropListData]="day[0]" [cdkDropListOrientation]="'horizontal'" *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2] - 25}"
                class="timeline-article timeline-article-top" (cdkDropListDropped)="drop($event)">
-            <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top part" cdkDrag>
-              <div class="meta-date"></div>
+            <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top part" cdkDrag> 
+              <div class="meta-date" cdkDragHandle></div>
               <div class="content-date">
                 <span>{{day[1]}}</span>
               </div>
               <div class="content-box">
-                <p>{{day[3]}}</p>
+                <p contenteditable="true" (input)="onChangeText(event.target.innerHTML)">{{day[3]}}</p>
               </div>
            </div>
           </div>
@@ -42,4 +42,5 @@
     </div>
   </div>
 </div>
+<button (click)="onClick()">Add Section</button>
 </html>
