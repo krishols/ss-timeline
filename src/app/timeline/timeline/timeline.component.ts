@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, SystemJsNgModuleLoader} from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -33,8 +34,11 @@ export class TimelineComponent implements OnInit {
     this.parts.splice((this.parts.length - 1), 0, partData);
     this.totalDays[index][3] = ('New Section');
   }
-  onTextChange(val){
-    console.log(val);
+  onTextChange(event, index){
+  setTimeout(() => {if (event != null) {
+     let newText = event.target.innerText;
+    this.totalDays[index][3] = (newText);
+  }}, 2000);
   } 
    ngOnInit(): void {
   }

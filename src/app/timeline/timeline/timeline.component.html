@@ -31,7 +31,9 @@
                 <span>{{day[1]}}</span>
               </div>
               <div class="content-box">
-                <p contenteditable="true" (input)="onChangeText(event.target.innerHTML)">{{day[3]}}</p>
+                <p> 
+                <div contenteditable (input)="onTextChange($event, day[0])">{{day[3]}} 
+                </div>
               </div>
            </div>
           </div>
