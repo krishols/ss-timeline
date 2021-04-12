@@ -33,13 +33,19 @@ export class TimelineComponent implements OnInit {
     const partData = this.parts[this.parts.length - 1] - 1;
     this.parts.splice((this.parts.length - 1), 0, partData);
     this.totalDays[index][3] = ('New Section');
+    console.log(this.totalDays);
+  
   }
-  onTextChange(event, index){
-  setTimeout(() => {if (event != null) {
-     let newText = event.target.innerText;
-    this.totalDays[index][3] = (newText);
-  }}, 2000);
-  } 
+
+  setWidth() {
+    const localWidth = this.totalDays[1][2] / 2;
+    const localLeftNum = -(localWidth / 2);
+    // const localLeft = localLeftNum.toString() + 'px';
+    return {
+      'width': localWidth,
+      'left': localLeftNum
+    };
+  }
    ngOnInit(): void {
   }
 

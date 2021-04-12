@@ -1,4 +1,4 @@
-import {Injectable, Output} from '@angular/core';
+import {Injectable, Output, SystemJsNgModuleLoader} from '@angular/core';
 import JSZip from 'jszip';
 import {DXT} from 'docxtemplater';
 import integer = DXT.integer;

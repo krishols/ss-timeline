@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <div class="container">
@@ -15,8 +15,11 @@
           <div class ="content-date">
           <span>{{range[0].toDateString().substring(0,10)}}</span>
           </div>
-            <div class="content-box" contenteditable="true">
-              <p>Assignment Released</p>
+              <div [style.font-size.px] = "50 / parts.length" [style.width.px] = "350 / parts.length" [style.left.px] = "-(300 / (parts.length * 1.9))" class="content-box">
+                <p>
+                  <div #el contenteditable (blur) = "totalDays[0][3] = el.innerText">
+                     Assignment Released
+                     </div>
             </div>
           </div>
           <div *ngFor="let day of totalDays" [ngStyle]="{'left.px': day[2]}" class="timeline-article timeline-article-top" cdkDrag>
@@ -30,10 +33,11 @@
               <div class="content-date">
                 <span>{{day[1]}}</span>
               </div>
-              <div class="content-box">
+              <div [style.font-size.px] = "50 / (parts.length)" [style.width.px] = "350 / parts.length" [style.left.px] = "-(300 / (parts.length * 1.9))" class="content-box">
                 <p> 
-                <div contenteditable (input)="onTextChange($event, day[0])">{{day[3]}} 
+                <div #el1 contenteditable (blur) = "day[3] = el1.innerText" >{{day[3]}} 
                 </div>
+              
               </div>
            </div>
           </div>
@@ -43,6 +47,7 @@
       </section>
     </div>
   </div>
+  <button [style.left.px] = "totalDays[1][2]" class="button" (click)="onClick()">
+    Add Section </button>
 </div>
-<button (click)="onClick()">Add Section</button>
 </html>

@@ -30,7 +30,7 @@ export class TimelineService {
     let first = true;
     let index = 0;
     let smallIndex = 0;
-    const ptsWeight = [];
+    let ptsWeight = [];
     for (const pt of pts) {
       const ptDist = Math.floor((pt / total) * days);
       if (first){
@@ -46,10 +46,14 @@ export class TimelineService {
       }
     }
     if (this.totalDays < days) {
-      ptsWeight[smallIndex] += 1;
-      ptsWeight[ptsWeight.length - 1] += 1;
-      this.totalDays += 1;
+      ptsWeight[smallIndex] += days - this.totalDays;
+      ptsWeight[ptsWeight.length - 1] += days - this.totalDays;
+      this.totalDays += days - this.totalDays;
     }
+    // ptsWeight.push(ptsWeight[ptsWeight.length -1] -1)
+    ptsWeight = ptsWeight.sort(function(a,b) {
+      return a - b;
+    });
     return ptsWeight;
   }
 
@@ -58,12 +62,12 @@ export class TimelineService {
       for (const day of daysArray) {
         if (pointsArray[index] === day[0]) {
           const temp = index + 1;
-          const label = 'Finish Part ' + temp + '.';
+          const label = 'Finish Part ' + temp;
           day.push(label);
           index += 1;
         }
       }
-      daysArray[daysArray.length - 1][3] = 'Assignment due';
+      daysArray[daysArray.length - 1][3] = 'Finish Part '+ (index) +  ', Assignment due';
       return daysArray;
    }
   calcPixels(range: Array<any>, dataArr: Array<Array<number>>): Array<any> {

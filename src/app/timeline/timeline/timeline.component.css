@@ -42,7 +42,7 @@ body{
   position: absolute;
   top: 35%;
   left: -30px;
-  font-size:18px;
+  font-size: 1vw;
   white-space: nowrap;
   overflow-x: auto;
   opacity: 100%;
@@ -93,12 +93,10 @@ body{
   border:1px solid #205e3b;
   border-radius: 5px;
   background-color: #fff;
-  width: 180px;
+  word-break: normal;
   position: absolute;
   top: 60%;
   text-align: center;
-  font-size: 1vw;
-  left: -80px;
   padding:10px;
   opacity: 100%;
 }
@@ -163,6 +161,12 @@ body{
   bottom:-20px;
   border:10px solid transparent;
   border-top-color:#205e3b;
+}
+.button {
+  position: absolute;
+  width: 100px;
+  font-size: 16px;
+  height: 50px;
 }
 
 

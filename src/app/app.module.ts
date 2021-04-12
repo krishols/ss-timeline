@@ -51,6 +51,7 @@ import { CommonModule} from '@angular/common';
 import {FormGroup, FormControl} from '@angular/forms';
 import {TimelineComponent} from './timeline/timeline/timeline.component';
 import {DatesComponent} from './timeline/dates/dates.component';
+import { ResizableModule } from 'angular-resizable-element';
 
 @NgModule({
   declarations: [
