@@ -9,9 +9,13 @@ import 'src/app/custom-methods/custom-methods.module';
 
 export class TimelineService {
   private totalDays;
-  calcTL(pts: Array<any>, days: number, range: Array<any>): Array<any> {
+  private height: number; // user screen height
+  private width: number; // user screen width 
+  calcTL(pts: Array<any>, days: number, range: Array<any>, height: number, width: number): Array<any> {
     // calls helper functions to calculate data necessary for timeline
     const totalPoints = this.calcTotalPoints(pts);
+    this.height = height;
+    this.width = width;
     return this.calcDate(pts, days, range, totalPoints);
   }
 
@@ -75,9 +79,11 @@ export class TimelineService {
     let index = 0;
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < dataArr.length; i ++) {
-      index += (dataArr[i][0]  * 1115) / this.totalDays;
+      index += (dataArr[i][0]  * this.width) / this.totalDays;
       dataArr[i].push(index);
     }
+    console.log("data array");
+    console.log(dataArr);
     return dataArr;
   }
   addDates(range: Array<any>, dataArr: Array<Array<any>>): Array<any> {
@@ -104,7 +110,7 @@ export class TimelineService {
     return dates;
   }
   calcTLPixels(range: Array<any>, dates: Array<any>): Array<any> {
-    const incre = 1115.0 / this.totalDays;
+    const incre = (this.width - (this.width/8)) / this.totalDays;
     for (let i = 0; i <= this.totalDays; i ++) {
       dates[i].push(i * incre);
     }

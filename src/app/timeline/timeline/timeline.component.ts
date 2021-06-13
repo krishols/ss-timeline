@@ -14,6 +14,8 @@ export class TimelineComponent implements OnInit {
   @Input() range: Array<any>;
   @Input() totalDays: Array<any>;
   @Input() pixels: Array<any>;
+  @Input() height: number;
+  @Input() width: number;
   constructor() { }
   drop(event: CdkDragDrop<Array<any>>): void {
     for (let i = 0; i < this.parts.length; i ++) {
@@ -39,7 +41,10 @@ export class TimelineComponent implements OnInit {
 
   setWidth() {
     const localWidth = this.totalDays[1][2] / 2;
+    console.log("local width", localWidth);
+    console.log('width', this.width);
     const localLeftNum = -(localWidth / 2);
+    console.log(localLeftNum);
     // const localLeft = localLeftNum.toString() + 'px';
     return {
       'width': localWidth,

@@ -12,6 +12,8 @@ export class AppComponent {
   public points: Array<number>;
   public diffDays: number;
   public valid = false;
+  public height: number;
+  public width: number;
   public range: Array<any>;
   public daysArray: Array<any>;
   public partDaysArray: Array<any>;
@@ -21,6 +23,10 @@ export class AppComponent {
 
 
 constructor() {
+  this.height = window.innerHeight;
+  this.width = window.innerWidth;
+  //console.log(this.height);
+  console.log(this.width);
 }
 
 addDiff(diff: number): void {
@@ -36,7 +42,7 @@ addRange(range: Array<any>): void {
 handleSubmit(): void {
   if (this.diffDays && this.points) {
     this.valid = true;
-    this.partDaysArray = this.tlserv.calcTL(this.points, this.diffDays, this.range);
+    this.partDaysArray = this.tlserv.calcTL(this.points, this.diffDays, this.range, this.height, this.width);
     this.tldays = this.tlserv.createTLdates(this.range);
     this.tldays = this.tlserv.createLabels(this.tldays, this.partDaysArray);
     console.log(this.tldays);

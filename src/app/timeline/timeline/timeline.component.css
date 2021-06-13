@@ -24,7 +24,6 @@ body{
 }
 .main-timeline-section .conference-center-line{
   position: absolute;
-  width:97%;
   height:5px;
   top:50%;
   transform: translateY(-50%);
