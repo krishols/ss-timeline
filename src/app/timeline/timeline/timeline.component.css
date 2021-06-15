@@ -79,6 +79,7 @@ body{
 .timeline-article .timeline-article-top part {
   position: absolute;
   display: block;
+  left: inherit;
   flex-direction: row;
   top: 50%;
   transform: translateY(-50%);
@@ -93,12 +94,16 @@ body{
   border-radius: 5px;
   background-color: #fff;
   word-break: normal;
+  left: 0px;
+  transform: translateX(-45%);
   position: absolute;
   top: 60%;
   text-align: center;
   padding:10px;
   opacity: 100%;
 }
+
+
 .timeline-article .placeholder{
   background: white;
   transition: transform 250ms cubic-bezier(0, 0, .2,1);

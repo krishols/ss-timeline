@@ -15,7 +15,7 @@
           <div class ="content-date">
           <span>{{range[0].toDateString().substring(0,10)}}</span>
           </div>
-              <div [style.font-size.px] = "50 / parts.length" [style.width.px] = "350 / parts.length" [style.left.px] = "-(300 / (parts.length * 1.9))" class="content-box">
+              <div [style.font-size.px] = "50 / parts.length" [style.width.px] = "(width/6) / parts.length" class="content-box">
                 <p>
                   <div #el contenteditable (blur) = "totalDays[0][3] = el.innerText">
                      Assignment Released
@@ -33,7 +33,7 @@
               <div class="content-date">
                 <span>{{day[1]}}</span>
               </div>
-              <div [style.font-size.px] = "50 / (parts.length)" [style.width.px] = "350 / parts.length" [style.left.px] = "-(300 / (parts.length * 1.9))" class="content-box">
+              <div [style.font-size.px] = "50 / (parts.length)" [style.width.px] = "(width/6) / parts.length" class="content-box">
                 <p> 
                 <div #el1 contenteditable (blur) = "day[3] = el1.innerText" >{{day[3]}} 
                 </div>
