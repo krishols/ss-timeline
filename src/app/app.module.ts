@@ -46,11 +46,12 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { CommonModule} from '@angular/common';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, FormsModule} from '@angular/forms';
 import {TimelineComponent} from './timeline/timeline/timeline.component';
-import {DatesComponent} from './timeline/dates/dates.component';
+import {DatesComponent} from './timeline/days/days.component';
 import { ResizableModule } from 'angular-resizable-element';
 
 @NgModule({
@@ -67,6 +68,7 @@ import { ResizableModule } from 'angular-resizable-element';
   CdkTreeModule,
     CommonModule,
   DragDropModule,
+  FormsModule,
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -102,6 +104,7 @@ import { ResizableModule } from 'angular-resizable-element';
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  NgxMaterialTimepickerModule,
   OverlayModule,
   PortalModule,
   ScrollingModule

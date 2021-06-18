@@ -1,6 +1,7 @@
 import { Component, Optional  } from '@angular/core';
 import { TimelineService } from './timeline/timeline.service';
 import {FormGroup} from '@angular/forms';
+import { ExecOptionsWithStringEncoding } from 'child_process';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent {
   public partDaysArray: Array<any>;
   public tldays: Array<any>;
   public tlserv: TimelineService = new TimelineService();
+  public units: string; 
 
 
 

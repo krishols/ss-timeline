@@ -8,9 +8,9 @@ import {DatesService} from '../dates.service';
 
 
 @Component({
-  selector: 'app-dates',
-  templateUrl: './dates.component.html',
-  styleUrls: ['./dates.component.css']
+  selector: 'app-days',
+  templateUrl: './days.component.html',
+  styleUrls: ['./days.component.css']
 })
 export class DatesComponent implements OnInit {
   @Input() numPoints;

@@ -2,3 +2,15 @@
   display: flex;
   justify-content: center;
 }
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #205e3b;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color: #205e3b;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: #205e3b;
+}

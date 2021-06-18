@@ -1,8 +1,16 @@
 <div class="left">
   <h1>{{title}}</h1>
   </div>
-
-<app-dates (diffEvent)="addDiff($event)" (dateRange)="addRange($event)"></app-dates>
+  <mat-radio-group aria-label="Select an option" [(ngModel)] = "units"> What units of time will your assignment be in? <br> <br>
+    <mat-radio-button value="minutes">Minutes/hours</mat-radio-button> <br> <br>
+    <mat-radio-button value="days">Days/weeks</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="units == 'days'"> 
+<app-days (diffEvent)="addDiff($event)" (dateRange)="addRange($event)"></app-days>
+</div>
+<div *ngIf="units == 'minutes'"> 
+  <app-minutes> yeah </app-minutes>  
+</div>
 <app-file-upload (pointsEvent)= "addPoints($event)"></app-file-upload>
 
 <input type="submit" (click)="handleSubmit()">

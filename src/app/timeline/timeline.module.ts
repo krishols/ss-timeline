@@ -4,7 +4,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
-import { DatesComponent} from './dates/dates.component';
+import { DatesComponent} from './days/days.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
