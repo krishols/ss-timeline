@@ -6,7 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DatesComponent} from './days/days.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
-import { TimelineComponent } from './timeline/timeline.component';
+import { TimelineComponent } from './timeline-days/timeline.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 

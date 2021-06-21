@@ -9,13 +9,13 @@
 <app-days (diffEvent)="addDiff($event)" (dateRange)="addRange($event)"></app-days>
 </div>
 <div *ngIf="units == 'minutes'"> 
-  <app-minutes> yeah </app-minutes>  
+  <app-minutes> </app-minutes>  
 </div>
 <app-file-upload (pointsEvent)= "addPoints($event)"></app-file-upload>
 
 <input type="submit" (click)="handleSubmit()">
 
-<div *ngIf="valid">
+<div *ngIf="validDays">
   <app-timeline [parts]="partDaysArray" [range] = "range" [totalDays]="tldays" [height]="height" [width]="width">
   </app-timeline>
 </div>

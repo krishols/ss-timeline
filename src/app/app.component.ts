@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'Assignment Timeline Maker';
   public points: Array<number>;
   public diffDays: number;
-  public valid = false;
+  public validDays = false;
   public height: number;
   public width: number;
   public range: Array<any>;
@@ -42,8 +42,8 @@ addRange(range: Array<any>): void {
 
 }
 handleSubmit(): void {
-  if (this.diffDays && this.points) {
-    this.valid = true;
+  if (this.diffDays && this.points && this.units == "days") {
+    this.validDays = true;
     this.partDaysArray = this.tlserv.calcTL(this.points, this.diffDays, this.range, this.height, this.width);
     this.tldays = this.tlserv.createTLdates(this.range);
     this.tldays = this.tlserv.createLabels(this.tldays, this.partDaysArray);

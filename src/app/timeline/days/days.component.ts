@@ -23,10 +23,9 @@ export class DatesComponent implements OnInit {
     end: new FormControl()
   });
   onChange(range: FormGroup): void {
-    const diff = this.datesserv.calcRange(range);
+    const diff = this.datesserv.calcDayRange(range);
     this.diffEvent.emit(diff);
     const startEndDates = this.datesserv.convertToDates(range);
-    console.log(startEndDates, 'dates');
     this.dateRange.emit(startEndDates);
   }
   constructor() { }

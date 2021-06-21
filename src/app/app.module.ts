@@ -47,16 +47,19 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { NgxTimepickerFieldComponent } from 'ngx-material-timepicker';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { CommonModule} from '@angular/common';
 import {FormGroup, FormControl, FormsModule} from '@angular/forms';
-import {TimelineComponent} from './timeline/timeline/timeline.component';
+import {TimelineComponent} from './timeline/timeline-days/timeline.component';
 import {DatesComponent} from './timeline/days/days.component';
 import { ResizableModule } from 'angular-resizable-element';
+import { MinutesComponent } from './timeline/days/minutes/minutes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    MinutesComponent
   ],
   imports: [
     BrowserModule,
