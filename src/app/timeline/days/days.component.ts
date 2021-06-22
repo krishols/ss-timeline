@@ -17,15 +17,17 @@ export class DatesComponent implements OnInit {
   @Output() diffEvent = new EventEmitter<number>();
   @Output() dateRange = new EventEmitter<Array<any>>();
   tlserve: TimelineService = new TimelineService();
-  datesserv: DatesService = new DatesService();
+  ds: DatesService = new DatesService();
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
   });
   onChange(range: FormGroup): void {
-    const diff = this.datesserv.calcDayRange(range);
+    // caclulate and emit number of days between start and end date 
+    const diff = this.ds.calcDayRange(range);
     this.diffEvent.emit(diff);
-    const startEndDates = this.datesserv.convertToDates(range);
+    // calculate and emit start and end dates as Date objects 
+    const startEndDates = this.ds.convertToDates(range);
     this.dateRange.emit(startEndDates);
   }
   constructor() { }

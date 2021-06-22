@@ -17,6 +17,7 @@ export class TimelineComponent implements OnInit {
   @Input() height: number;
   @Input() width: number;
   constructor() { }
+  // handles drag and drop of dates on timeline 
   drop(event: CdkDragDrop<Array<any>>): void {
     for (let i = 0; i < this.parts.length; i ++) {
       // @ts-ignore
@@ -30,27 +31,17 @@ export class TimelineComponent implements OnInit {
       }
     }
   }
+  
+  //create new timeline label, called when button is clicked 
   onClick(): void {
+    // calcluate offsets
     const index = this.totalDays.length - 2;
     const partData = this.parts[this.parts.length - 1] - 1;
+    // add to parts and totalDays 
     this.parts.splice((this.parts.length - 1), 0, partData);
     this.totalDays[index][3] = ('New Section');
-    console.log(this.totalDays);
-  
   }
 
-  setWidth() {
-    const localWidth = this.totalDays[1][2] / 2;
-    console.log("local width", localWidth);
-    console.log('width', this.width);
-    const localLeftNum = -(localWidth / 2);
-    console.log(localLeftNum);
-    // const localLeft = localLeftNum.toString() + 'px';
-    return {
-      'width': localWidth,
-      'left': localLeftNum
-    };
-  }
    ngOnInit(): void {
   }
 

@@ -54,7 +54,7 @@ import {FormGroup, FormControl, FormsModule} from '@angular/forms';
 import {TimelineComponent} from './timeline/timeline-days/timeline.component';
 import {DatesComponent} from './timeline/days/days.component';
 import { ResizableModule } from 'angular-resizable-element';
-import { MinutesComponent } from './timeline/days/minutes/minutes.component';
+import { MinutesComponent } from './timeline/minutes/minutes.component';
 
 @NgModule({
   declarations: [

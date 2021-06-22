@@ -6,11 +6,14 @@ import { NgxTimepickerFieldComponent } from 'ngx-material-timepicker';
   providedIn: 'root'
 })
 export class DatesService {
-  calcMinutesRange(start: string, end: string): number {
-    console.log(start.length); // 7 
-    console.log(end.length);  // 8 
-    //TODO: call parseMinString on both start and end 
-    return 3;
+  calcMinutesRange(start: string, end: string): Array<any> {
+    // call method to convert start and end to dates that calculations can be performed on
+    let startDate = this.parseMinString(start);
+    let endDate = this.parseMinString(end);
+    // calculate time difference in minutes
+    const diff = endDate.getTime() - startDate.getTime();
+    const diffInMin = diff / (1000 * 60);
+    return [startDate, endDate, diffInMin];
   }
 
   calcDayRange(range: FormGroup): number {
@@ -29,13 +32,31 @@ export class DatesService {
     return [start, end];
   }
 
-  parseMinString(mins: string) {
-    if (mins.length == 7) {
-      // is such as 7:00 
+  parseMinString(time: string): Date {
+    let hours: number; 
+    let mins: number;
+    // if hour  is one digit
+    if (time.length == 7) {
+      hours = parseInt(time[0]); 
+      mins = parseInt(time.substr(2, 2));
     }
+    // if hour is two digits 
     else { 
-      // is such as 10:00 
+      hours = parseInt(time.substr(0, 2));
+      mins = parseInt(time.substr(3, 2));
     }
+    const ap = time.substr((time.length - 2))
+    // if time is PM, converts to 24 hour time 
+    if (ap == "PM"){
+      hours += 12; 
+    }
+    // create Date from time for calculation 
+    let date = new Date(2021, 1, 1, hours, mins);
+    if (date)
+      return date; 
+    else 
+      throw new Error("invalid date");
+      
   }
   constructor() { }
 }
