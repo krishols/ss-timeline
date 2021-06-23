@@ -1,3 +1,4 @@
 {
-    "workbench.colorTheme": "Quiet Light"
+    "workbench.colorTheme": "Default Light+",
+    "workbench.preferredHighContrastColorTheme": "Default Dark+"
 }

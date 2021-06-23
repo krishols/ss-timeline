@@ -55,11 +55,12 @@ import {TimelineComponent} from './timeline/timeline-days/timeline.component';
 import {DatesComponent} from './timeline/days/days.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { MinutesComponent } from './timeline/minutes/minutes.component';
+import { TimelineMinutesComponent } from './timeline/timeline-minutes/timeline-minutes.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    MinutesComponent
+    MinutesComponent, TimelineMinutesComponent
   ],
   imports: [
     BrowserModule,

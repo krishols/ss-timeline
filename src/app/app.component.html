@@ -1,15 +1,17 @@
 <div class="left">
   <h1>{{title}}</h1>
   </div>
+  <div> 
   <mat-radio-group aria-label="Select an option" [(ngModel)] = "units"> What units of time will your assignment be in? <br> <br>
     <mat-radio-button value="minutes">Minutes/hours</mat-radio-button> <br> <br>
     <mat-radio-button value="days">Days/weeks</mat-radio-button>
   </mat-radio-group>
+  </div>
   <div *ngIf="units == 'days'"> 
 <app-days (diffEvent)="addDiff($event)" (dateRange)="addRange($event)"></app-days>
 </div>
 <div *ngIf="units == 'minutes'"> 
-  <app-minutes> </app-minutes>  
+  <app-minutes (startDate)="addStart($event)"(endDate)="addEnd($event)" (diff)="addMinRange($event)"> </app-minutes>  
 </div>
 <app-file-upload (pointsEvent)= "addPoints($event)"></app-file-upload>
 
@@ -17,5 +19,9 @@
 
 <div *ngIf="validDays">
   <app-timeline [parts]="partDaysArray" [range] = "range" [totalDays]="tldays" [height]="height" [width]="width">
+  </app-timeline>
+</div>
+<div *ngIf="validMins"> 
+  <app-timeline [parts]="partMinsArray" [range]="range" [totalDays]="tlmins" [height]="height" [width]="width">
   </app-timeline>
 </div>

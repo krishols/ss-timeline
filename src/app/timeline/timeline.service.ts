@@ -9,14 +9,18 @@ import 'src/app/custom-methods/custom-methods.module';
 
 export class TimelineService {
   private totalDays;
+  private totalMinIncre; 
+  private incre;
+  // total number of increments minutes are broken down into 
   private height: number; // user screen height
   private width: number; // user screen width 
-  calcTL(pts: Array<any>, days: number, range: Array<any>, height: number, width: number): Array<any> {
-    // calls helper functions to calculate data necessary for timeline
+  // calls helper functions to calculate data necessary for days/weeks timeline
+  calcDaysTL(pts: Array<any>, days: number, range: Array<any>, height: number, width: number): Array<any> {
+    // calls to calculate total number of points in assignment
     const totalPoints = this.calcTotalPoints(pts);
     this.height = height;
     this.width = width;
-    return this.calcDate(pts, days, range, totalPoints);
+    return this.calcWeight(pts, days, totalPoints);
   }
 
   calcTotalPoints(pts: Array<any>): number {
@@ -27,7 +31,7 @@ export class TimelineService {
     }
     return total;
   }
-  calcDate(pts: Array<any>, days: number, range: Array<any>, total: number): Array<any> {
+  calcWeight(pts: Array<any>, days: number, total: number): Array<any> {
     // calculates number of days to spend on each part of timeline
     this.totalDays = 0;
     let smallestDay;
@@ -58,7 +62,27 @@ export class TimelineService {
     ptsWeight = ptsWeight.sort(function(a,b) {
       return a - b;
     });
+   // console.log(ptsWeight);
     return ptsWeight;
+  }
+
+
+  calcMinsTL(pts: Array<any>, totalMins: number, width: number): Array<any> {
+    const totalPoints = this.calcTotalPoints(pts);
+    this.width = width;
+    // calculates increment of minutes timeline will be broken down into - 5 or 10 minutes 
+   // if total minutes of assignment is less than 45 it is broken down by increments of 5 
+    if (totalMins < 45) {
+      this.totalMinIncre = Math.ceil(totalMins / 5);
+      this.incre = 5; 
+    }
+    // if total minutes of assignments is more than 45 it is broken down by increments of 10
+    else {
+      this.totalMinIncre = Math.ceil(totalMins/10);
+      this.incre = 10; 
+    }
+    return this.calcWeight(pts, this.totalMinIncre, totalPoints); 
+    
   }
 
    createLabels(daysArray: Array<any>, pointsArray: Array<any>): Array<any> {
@@ -97,24 +121,54 @@ export class TimelineService {
     }
     return dataArr;
   }
-  createTLdates(range: Array<any>): Array<any> {
+  createTLdays(range: Array<any>): Array<any> {
     let dates = [];
+    // create first element in array, starting day 
     dates.push([0, range[0].toDateString().substring(0, 10)]);
+    // create every additional index and date in array 
     for (let i = 1; i < this.totalDays; i ++) {
       let tempDate = new Date();
       tempDate = tempDate.addDays(range, i);
       dates.push([i, tempDate.toDateString().substring(0, 10)]);
     }
+    // create final day 
     dates.push([this.totalDays, range[1].toDateString().substring(0, 10)]);
-    dates = this.calcTLPixels(range, dates);
+    // call helper function to calculate pixels per day 
+    dates = this.calcDayPixels(dates);
+    // return Array of Arrays, each Array of type [index: number, date: string, pixels: number] 
     return dates;
   }
-  calcTLPixels(range: Array<any>, dates: Array<any>): Array<any> {
+
+  calcDayPixels(dates: Array<any>): Array<any> {
     const incre = (this.width - (this.width/8)) / this.totalDays;
     for (let i = 0; i <= this.totalDays; i ++) {
       dates[i].push(i * incre);
     }
     return dates;
   }
+
+  createTLmins(min: number): Array<any> {
+      let mins = []; 
+      let incre = 0;
+      // create every index and time increment in the array 
+      for (let i = 0; i <= this.totalMinIncre; i++) {
+        mins.push([i, incre]); 
+        incre += this.incre; 
+      }
+      // all helper function to calculate pixels per mins 
+      mins = this.calcMinPixels(mins);
+      // return Array of Arrays, each Array of type [index: number, minutes increment: number, pixels: number] 
+      return mins; 
+  }
+
+  calcMinPixels(mins: Array<any>) {
+    const incre = (this.width - (this.width / 8)) / this.totalMinIncre;
+    for (let i = 0; i <= this.totalMinIncre; i ++) {
+      mins[i].push(i * incre);
+    }
+     return mins;
+  }
+
+
   constructor() { }
 }
