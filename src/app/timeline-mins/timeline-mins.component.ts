@@ -1,21 +1,19 @@
-import {Component, Input, OnInit, SystemJsNgModuleLoader} from '@angular/core';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { DOCUMENT } from '@angular/common';
-
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.css']
+  selector: 'app-timeline-mins',
+  templateUrl: './timeline-mins.component.html',
+  styleUrls: ['./timeline-mins.component.css']
 })
-export class TimelineComponent implements OnInit {
+export class TimelineMinsComponent implements OnInit {
   @Input() parts: Array<any>;
   @Input() total: number;
-  @Input() range: Array<Date>;
+  @Input() range: Array<any>;
   @Input() totalDays: Array<any>;
   @Input() pixels: Array<any>;
   @Input() height: number;
-  @Input() width: number;
+  @Input() width: number; public start: string;
   constructor() { 
   }
   // handles drag and drop of dates on timeline 
@@ -43,7 +41,18 @@ export class TimelineComponent implements OnInit {
     this.totalDays[index][3] = ('New Section');
   }
 
-   ngOnInit(): void {
+  verifyStart() {
+    if (parseInt(this.start.substring(0, 2)) > 12) {
+      let tempStart = this.start.substring(2); 
+      this.start = (parseInt(this.start.substring(0, 2)) - 12) + tempStart + " PM"; 
+    }
+    else {
+      this.start = this.start.substring(0, 5) + " AM";
+    }
+  }
+  ngOnInit(): void {
+    this.start = this.range[0].toTimeString();
+    this.verifyStart(); 
   }
 
 }
