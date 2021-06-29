@@ -13,8 +13,8 @@
         <div class="conference-center-line" [style.width.px]="width - (width/8)"></div>
         <div class="conference-timeline-content">
           <div class="timeline-article timeline-article-top">
-            <div class="content-date" [style.left.px]="totalMins[0][2] - (width/70)">
-              <span>{{this.start}}</span>
+            <div class="content-date">
+              <span>{{range[0].toDateString().substring(0,10)}}</span>
             </div>
             <div [style.font-size.px]="50 / parts.length" [style.width.px]="(width/6) / parts.length"
               class="content-box">
@@ -30,23 +30,19 @@
           </div>
           <div cdkDropListGroup class="example-list">
             <div cdkDropList [cdkDropListData]="day[0]" [cdkDropListOrientation]="'horizontal'"
-              *ngFor="let day of totalMins" [ngStyle]="{'left.px': day[2] - (width/70)}"
+              *ngFor="let day of totalMins" [ngStyle]="{'left.px': day[2] - 25}"
               class="timeline-article timeline-article-top" (cdkDropListDropped)="drop($event)">
-              <div *ngIf="day[0] == (total - 1); else other_content" class="content-date"> 
-                <span> {{this.end}} </span>
-              </div>
-              <ng-template #other_content> 
-                <div class="content-date"> 
-                  <span> {{day[1]}} minutes </span>
-                </div>
-                </ng-template>
               <div *ngIf="parts.includes(day[0])" class="timeline-article timeline-article-top part" cdkDrag>
                 <div class="meta-date" cdkDragHandle></div>
+                <div class="content-date">
+                  <span>{{day[1]}}</span>
+                </div>
                 <div [style.font-size.px]="50 / (parts.length)" [style.width.px]="(width/6) / parts.length"
                   class="content-box">
                   <p>
                   <div #el1 contenteditable (blur)="day[3] = el1.innerText">{{day[3]}}
                   </div>
+
                 </div>
               </div>
             </div>

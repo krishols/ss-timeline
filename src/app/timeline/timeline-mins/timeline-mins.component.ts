@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-timeline-mins',
-  templateUrl: './timeline/timeline-mins.component.html',
+  templateUrl: './timeline-mins.component.html',
   styleUrls: ['./timeline-mins.component.css']
 })
 export class TimelineMinsComponent implements OnInit {

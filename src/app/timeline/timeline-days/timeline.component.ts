@@ -11,13 +11,12 @@ import { DOCUMENT } from '@angular/common';
 export class TimelineComponent implements OnInit {
   @Input() parts: Array<any>;
   @Input() total: number;
-  @Input() range: Array<Date>;
+  @Input() range: Array<any>;
   @Input() totalDays: Array<any>;
   @Input() pixels: Array<any>;
   @Input() height: number;
   @Input() width: number;
-  constructor() { 
-  }
+  constructor() { }
   // handles drag and drop of dates on timeline 
   drop(event: CdkDragDrop<Array<any>>): void {
     for (let i = 0; i < this.parts.length; i ++) {
