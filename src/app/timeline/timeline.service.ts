@@ -106,8 +106,6 @@ export class TimelineService {
       index += (dataArr[i][0]  * this.width) / this.totalDays;
       dataArr[i].push(index);
     }
-    console.log("data array");
-    console.log(dataArr);
     return dataArr;
   }
   addDates(range: Array<any>, dataArr: Array<Array<any>>): Array<any> {
