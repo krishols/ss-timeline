@@ -10,7 +10,7 @@ export class TimelineMinsComponent implements OnInit {
   @Input() parts: Array<any>;
   @Input() total: number;
   @Input() range: Array<any>;
-  @Input() totalMins: Array<any>;
+  @Input() totalDays: Array<any>;
   @Input() pixels: Array<any>;
   @Input() height: number;
   @Input() width: number; 
@@ -22,13 +22,13 @@ export class TimelineMinsComponent implements OnInit {
   drop(event: CdkDragDrop<Array<any>>): void {
     for (let i = 0; i < this.parts.length; i ++) {
       // @ts-ignore
-      if (this.totalMins[event.previousContainer.data][0] === this.parts[i]) {
+      if (this.totalDays[event.previousContainer.data][0] === this.parts[i]) {
         // @ts-ignore
-        this.parts[i] = this.totalMins[event.container.data][0];
+        this.parts[i] = this.totalDays[event.container.data][0];
         // @ts-ignore
-        this.totalMins[event.container.data][3] = this.totalMins[event.previousContainer.data][3];
+        this.totalDays[event.container.data][3] = this.totalDays[event.previousContainer.data][3];
         // @ts-ignore
-        this.totalMins[event.previousContainer.data][3] = null;
+        this.totalDays[event.previousContainer.data][3] = null;
       }
     }
   }
@@ -36,11 +36,11 @@ export class TimelineMinsComponent implements OnInit {
   //create new timeline label, called when button is clicked 
   onClick(): void {
     // calcluate offsets
-    const index = this.totalMins.length - 2;
+    const index = this.totalDays.length - 2;
     const partData = this.parts[this.parts.length - 1] - 1;
-    // add to parts and totalMins 
+    // add to parts and totalDays 
     this.parts.splice((this.parts.length - 1), 0, partData);
-    this.totalMins[index][3] = ('New Section');
+    this.totalDays[index][3] = ('New Section');
   }
 
   verifyTime(time: string): string {
@@ -58,10 +58,10 @@ export class TimelineMinsComponent implements OnInit {
     this.end = this.range[1].toTimeString();
     this.start = this.verifyTime(this.start); 
     this.end = this.verifyTime(this.end);
-    this.total = this.totalMins.length;
+    this.total = this.totalDays.length;
     console.log(this.total)
     console.log("^total")
-    console.log(this.totalMins);
+    console.log(this.totalDays);
   }
 
 }
